@@ -13,10 +13,11 @@ class App extends React.Component {
     }
 
     changeView(filter) {
+        console.log('filter', filter)
         if(this.props.filters.indexOf(filter)> -1){
             this.setState({filter: filter});
             this.props.selected = filter;
-            this.props.projects = this.projects.filter(item => item.category == this.props.selected);
+            this.props.projects = filter == 'All' ? this.projects : this.projects.filter(item => item.category == this.props.selected);
         }
     }
 
